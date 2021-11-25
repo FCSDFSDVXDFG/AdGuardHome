@@ -69,6 +69,11 @@ func initDNSServer() error {
 	filterConf.EtcHosts = Context.etcHosts
 	filterConf.ConfigModified = onConfigModified
 	filterConf.HTTPRegister = httpRegister
+
+	filterConf.ParentalListID = ParentalListID
+	filterConf.SafeBrowsingListID = SafeBrowsingListID
+	filterConf.SafeSearchListID = SafeSearchListID
+
 	Context.dnsFilter = filtering.New(&filterConf, nil)
 
 	p := dnsforward.DNSCreateParams{

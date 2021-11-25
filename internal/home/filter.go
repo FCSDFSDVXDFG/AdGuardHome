@@ -21,6 +21,16 @@ import (
 	"github.com/AdguardTeam/golibs/stringutil"
 )
 
+// The IDs of built-in filter lists.
+const (
+	CustomListID = -iota
+	SysHostsListID
+	BlockedSvcsListID
+	ParentalListID
+	SafeBrowsingListID
+	SafeSearchListID
+)
+
 var nextFilterID = time.Now().Unix() // semi-stable way to generate an unique ID
 
 // Filtering - module object

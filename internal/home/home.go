@@ -244,6 +244,7 @@ func setupHostsContainer() (err error) {
 	}
 
 	Context.etcHosts, err = aghnet.NewHostsContainer(
+		SysHostsListID,
 		aghos.RootDirFS(),
 		Context.hostsWatcher,
 		aghnet.DefaultHostsPaths()...,
@@ -388,7 +389,7 @@ func run(args options, clientBuildFS fs.FS) {
 	// clients package uses filtering package's static data (filtering.BlockedSvcKnown()),
 	//  so we have to initialize filtering's static data first,
 	//  but also avoid relying on automatic Go init() function
-	filtering.InitModule()
+	filtering.InitModule(BlockedSvcsListID)
 
 	err = setupConfig(args)
 	fatalOnError(err)

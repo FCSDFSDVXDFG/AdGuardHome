@@ -234,12 +234,12 @@ var serviceRulesArray = []svc{
 }
 
 // convert array to map
-func initBlockedServices() {
+func initBlockedServices(listID int) {
 	serviceRules = make(map[string][]*rules.NetworkRule)
 	for _, s := range serviceRulesArray {
 		netRules := []*rules.NetworkRule{}
 		for _, text := range s.rules {
-			rule, err := rules.NewNetworkRule(text, 0)
+			rule, err := rules.NewNetworkRule(text, listID)
 			if err != nil {
 				log.Error("rules.NewNetworkRule: %s  rule: %s", err, text)
 				continue
